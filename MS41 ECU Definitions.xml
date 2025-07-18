@@ -1415,6 +1415,14 @@ These definitions are created for FREE without any sort of guarantee. The develo
 		<description>If RPM is less than this value, DTC "212 - VANOS Bank 1 Mechanical" check will be disabled</description>
 	</table>
 	
+	<table type="2D" name="VANOS - Minimum RPM (Closed Throttle)" category="VANOS" storagetype="uint8" sizey="1" userlevel="1">
+		<scaling units="RPM" expression="x*32" to_byte="x/32" format="0" fineincrement="50" coarseincrement="500" />
+			<table type="Static Y Axis" name="Minimum RPM for VANOS with closed throttle" sizey="1">
+				<data>Minimum RPM Threshold</data>
+			</table>
+		<description>If the current RPM is greater than this value, VANOS will remain activated with closed throttle as long as "VANOS - Min. Load (Light Throttle) (MT)/(AT)" load conditions are met.</description>
+	</table>
+
 	<table type="3D" name="VANOS - Min. Load (Light Throttle) (AT)" category="VANOS" storagetype="uint8"  userlevel="1" sizex="5" sizey="11" >
 		<scaling units="mg/stroke [Limit = 1389]" expression="x*(1389/255)" to_byte="x/(1389/255)" format="0" fineincrement="1" coarseincrement="10" />
 			<table type="X Axis" name="Coolant Temperature" storagetype="uint8" logparam="P2" >
@@ -4089,6 +4097,8 @@ These definitions are created for FREE without any sort of guarantee. The develo
 
 <!--VANOS-->
 	<table name="DTC 212 - Minimum RPM" storageaddress="0x2CF" />
+
+	<table name="VANOS - Minimum RPM (Closed Throttle)" storageaddress="0x2DC" />
 
 	<table name="Detection - Light/Heavy Throttle" storageaddress="0x1922">
 		<table type="Y Axis" storageaddress="0x14C3" />
